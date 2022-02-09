@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:replace="fragment-db :: headResources"></th:block>
+    <title>Search result</title>
+</head>
+<body>
+<th:block th:replace="fragment-db :: navbar"></th:block>
+<div class="container">
+    <h2>Result</h2>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>id</th>
+            <th>model</th>
+            <th>destination</th>
+            <th>specification</th>
+            <th>manufacturer</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="chair : ${chairs}">
+            <td><a th:text="${chair.id}"></a></td>
+            <td><a th:text="${chair.model}"></a></td>
+            <td><a th:text="${chair.destination.getValue()}"></a></td>
+            <td><a th:text="${chair.specification}"></a></td>
+            <td><span th:if="${chair.manufacturer} != null"><a th:text="${chair.manufacturer.companyName}"></a></span></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<th:block th:replace="fragment-db :: footer"></th:block>
+</body>
+</html>

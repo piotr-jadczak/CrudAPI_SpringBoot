@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:replace="fragment-db :: headResources"></th:block>
+    <title>Add distributor</title>
+</head>
+<body>
+<th:block th:replace="fragment-db :: navbar"></th:block>
+<div class="container">
+    <div class="mt-2 mb-5">
+        <form method="post" th:action="@{/chairs/add-distributor}" th:object="${chairDistributorForm}" class="border border-dark rounded">
+            <fieldset class="p-3">
+                <legend class="text-center">Add distributor</legend>
+                <input type="hidden" th:field="*{chairId}">
+                <div class="form-group">
+                    <label for="distributor">Distributor</label>
+                    <select class="form-control" id="distributor" th:field="*{distributor}">
+                        <option class="form-control" th:each="distributor : ${distributors}"
+                                th:value="${distributor.id}" th:text="${distributor.companyName}"></option>
+                    </select>
+                    <a th:if="${#fields.hasErrors('distributor')}" th:errors="*{distributor}" class="text-danger"></a>
+                </div>
+                <div class="col-md-12 text-center">
+                    <button type="submit" class="text-center btn btn-primary">Submit</button>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>
+<th:block th:replace="fragment-db :: footer"></th:block>
+</body>
+</html>

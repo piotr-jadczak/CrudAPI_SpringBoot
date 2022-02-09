@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:replace="fragment-db :: headResources"></th:block>
+    <title>Chairs</title>
+</head>
+<body>
+<th:block th:replace="fragment-db :: navbar"></th:block>
+<div class="container">
+    <h2>All chairs</h2>
+    <a th:href="@{/chairs/add-chair/0}" class="btn btn-primary" role="button">Add</a>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>id</th>
+            <th>model</th>
+            <th>destination</th>
+            <th>specification</th>
+            <th>manufacturer</th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="chair : ${chairs}">
+            <td><a th:text="${chair.id}"></a></td>
+            <td><a th:text="${chair.model}"></a></td>
+            <td><a th:text="${chair.destination.getValue()}"></a></td>
+            <td><a th:text="${chair.specification}"></a></td>
+            <td><span th:if="${chair.manufacturer} != null"><a th:text="${chair.manufacturer.companyName}"></a></span></td>
+            <td><a th:href="@{/chairs/details-chair/{id}(id=${chair.id})}" class="btn btn-secondary" role="button">Details</a></td>
+            <td><a th:href="@{/chairs/add-chair/{id}(id=${chair.id})}" class="btn btn-primary" role="button">Edit</a></td>
+            <td><a th:href="@{/chairs/delete/{id}(id=${chair.id})}" class="btn btn-danger" role="button">Delete</a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<th:block th:replace="fragment-db :: footer"></th:block>
+</body>
+</html>

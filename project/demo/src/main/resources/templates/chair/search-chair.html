@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:replace="fragment-db :: headResources"></th:block>
+    <title>Search</title>
+</head>
+<body>
+<th:block th:replace="fragment-db :: navbar"></th:block>
+<div class="container">
+    <div class="mt-2 mb-5">
+        <form method="post" th:action="@{/search}" th:object="${searchForm}" class="border border-dark rounded">
+            <fieldset class="p-3">
+                <legend class="text-center">Search chair</legend>
+                <div class="form-group">
+                    <label for="searchOption">Search option</label>
+                    <select class="form-control" id="searchOption" th:field="*{searchOption}">
+                        <option class="form-control" th:each="searchOptionT : ${T(chair.crud.demo.domain.extension.SearchOptionT).values()}"
+                                th:value="${searchOptionT}" th:text="${searchOptionT.getValue()}"></option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="phrase">Phrase</label>
+                    <input type="text" class="form-control" id="phrase" th:field="*{phrase}" autocomplete="off" /><br>
+                    <a th:if="${#fields.hasErrors('phrase')}" th:errors="*{phrase}" class="text-danger"></a>
+                    <span th:if="${exceptionMessage}"><a th:text="${exceptionMessage}" class="text-danger"></a></span>
+                </div>
+                <div class="col-md-12 text-center">
+                    <button type="submit" class="text-center btn btn-primary">Search</button>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+
+</div>
+<th:block th:replace="fragment-db :: footer"></th:block>
+</body>
+</html>

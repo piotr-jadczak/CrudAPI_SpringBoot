@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:replace="fragment-db :: headResources"></th:block>
+    <title>Chair details</title>
+</head>
+<body>
+<th:block th:replace="fragment-db :: navbar"></th:block>
+<div class="container">
+    <h2>Details</h2>
+    <dl class="row">
+        <dt class = "col-sm-2">
+            id
+        </dt>
+        <dd class = "col-sm-10">
+            <a th:text="${distributor.id}"></a>
+        </dd>
+        <dt class = "col-sm-2">
+            company name
+        </dt>
+        <dd class = "col-sm-10">
+            <a th:text="${distributor.companyName}"></a>
+        </dd>
+        <dt class = "col-sm-2">
+            country of operation
+        </dt>
+        <dd class = "col-sm-10">
+            <a th:text="${distributor.countryOfOperation}"></a>
+        </dd>
+        <dt class = "col-sm-2">
+            contact phone
+        </dt>
+        <dd class = "col-sm-10">
+            <a th:text="${distributor.contactPhone}"></a>
+        </dd>
+        <dt class = "col-sm-2">
+            headquarters
+        </dt>
+        <dd class = "col-sm-10">
+            <a th:text="${distributor.headquarters}"></a>
+        </dd>
+    </dl>
+    <h2>Distributor chairs</h2>
+    <ul class="list-group">
+        <li class="list-group-item" th:each="chair : ${distributorChairs}">
+            <a th:text="${chair.model}"></a>
+        </li><br>
+    </ul>
+</div>
+<th:block th:replace="fragment-db :: footer"></th:block>
+</body>
+</html>

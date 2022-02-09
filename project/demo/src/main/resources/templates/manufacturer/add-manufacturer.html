@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:replace="fragment-db :: headResources"></th:block>
+    <title>Add manufacturer</title>
+</head>
+<body>
+<th:block th:replace="fragment-db :: navbar"></th:block>
+<div class="container">
+    <div class="mt-2 mb-5">
+        <form method="post" th:action="@{/manufacturers/add-manufacturer}" th:object="${manufacturerToAdd}" class="border border-dark rounded">
+            <fieldset class="p-3">
+                <legend class="text-center">Add manufacturer</legend>
+                <input type="hidden" th:field="*{id}">
+                <div class="form-group">
+                    <label for="companyName">Company Name</label>
+                    <input type="text" class="form-control" id="companyName" th:field="*{companyName}" autocomplete="off" /><br>
+                    <a th:if="${#fields.hasErrors('companyName')}" th:errors="*{companyName}" class="text-danger"></a>
+                </div>
+                <fieldset>
+                    <legend>Headquarters</legend>
+                    <div class="form-group">
+                        <label for="street">Street</label>
+                        <input type="text" class="form-control" id="street" th:field="*{headquarters.street}" autocomplete="off" /><br>
+                        <a th:if="${#fields.hasErrors('headquarters.street')}" th:errors="*{headquarters.street}" class="text-danger"></a>
+                    </div>
+                    <div class="form-group">
+                        <label for="apartmentNumber">Apartment Number</label>
+                        <input type="text" class="form-control" id="apartmentNumber" th:field="*{headquarters.apartmentNumber}" autocomplete="off" /><br>
+                        <a th:if="${#fields.hasErrors('headquarters.apartmentNumber')}" th:errors="*{headquarters.apartmentNumber}" class="text-danger"></a>
+                    </div>
+                    <div class="form-group">
+                        <label for="city">City</label>
+                        <input type="text" class="form-control" id="city" th:field="*{headquarters.city}" autocomplete="off" /><br>
+                        <a th:if="${#fields.hasErrors('headquarters.city')}" th:errors="*{headquarters.city}" class="text-danger"></a>
+                    </div>
+                    <div class="form-group">
+                        <label for="zipCode">Zip code</label>
+                        <input type="text" class="form-control" id="zipCode" th:field="*{headquarters.zipCode}" autocomplete="off" /><br>
+                        <a th:if="${#fields.hasErrors('headquarters.zipCode')}" th:errors="*{headquarters.zipCode}" class="text-danger"></a>
+                    </div>
+                    <div class="form-group">
+                        <label for="country">Country</label>
+                        <input type="text" class="form-control" id="country" th:field="*{headquarters.country}" autocomplete="off" /><br>
+                        <a th:if="${#fields.hasErrors('headquarters.country')}" th:errors="*{headquarters.country}" class="text-danger"></a>
+                    </div>
+                </fieldset>
+                <div class="col-md-12 text-center">
+                    <button type="submit" class="text-center btn btn-primary">Submit</button>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>
+<th:block th:replace="fragment-db :: footer"></th:block>
+</body>
+</html>

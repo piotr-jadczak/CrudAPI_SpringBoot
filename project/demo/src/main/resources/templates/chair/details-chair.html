@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:replace="fragment-db :: headResources"></th:block>
+    <title>Chair details</title>
+</head>
+<body>
+<th:block th:replace="fragment-db :: navbar"></th:block>
+<div class="container">
+    <h2>Details</h2>
+    <dl class="row">
+        <dt class = "col-sm-2">
+            id
+        </dt>
+        <dd class = "col-sm-10">
+            <a th:text="${chair.id}"></a>
+        </dd>
+        <dt class = "col-sm-2">
+            model
+        </dt>
+        <dd class = "col-sm-10">
+            <a th:text="${chair.model}"></a>
+        </dd>
+        <dt class = "col-sm-2">
+            destination
+        </dt>
+        <dd class = "col-sm-10">
+            <a th:text="${chair.destination.getValue()}"></a>
+        </dd>
+        <dt class = "col-sm-2">
+            specification
+        </dt>
+        <dd class = "col-sm-10">
+            <a th:text="${chair.specification.id}"></a>
+        </dd>
+        <dt class = "col-sm-2">
+            manufacturer
+        </dt>
+        <dd class = "col-sm-10">
+            <span th:if="${chair.manufacturer} != null"><a th:text="${chair.manufacturer.companyName}"></a></span>
+        </dd>
+    </dl>
+    <h2>Chair Distributors</h2>
+    <a th:href="@{/chairs/add-distributor/{id}(id=${chair.id})}" class="btn btn-primary" role="button">Add</a>
+    <ul class="list-group">
+        <li class="list-group-item" th:each="distributor : ${chairDistributors}">
+            <a th:text="${distributor.companyName}"></a>
+            <a>&nbsp</a>
+            <a th:href="@{/chairs/delete-distributor/{chairId}/{distributorId}(chairId=${chair.id}, distributorId=${distributor.id})}" class="btn btn-danger" role="button">Delete</a>
+        </li><br>
+    </ul>
+</div>
+<th:block th:replace="fragment-db :: footer"></th:block>
+</body>
+</html>

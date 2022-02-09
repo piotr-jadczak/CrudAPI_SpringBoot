@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:replace="fragment-db :: headResources"></th:block>
+    <title>Manufacturers</title>
+</head>
+<body>
+<th:block th:replace="fragment-db :: navbar"></th:block>
+<div class="container">
+    <h2>All manufacturers</h2>
+    <a th:href="@{/manufacturers/add-manufacturer/0}" class="btn btn-primary" role="button">Add</a>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>id</th>
+            <th>company name</th>
+            <th>headquarters address</th>
+            <th></th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="manufacturer : ${manufacturers}">
+            <td><a th:text="${manufacturer.id}"></a></td>
+            <td><a th:text="${manufacturer.companyName}"></a></td>
+            <td><a th:text="${manufacturer.headquarters}"></a></td>
+            <td><a th:href="@{/manufacturers/add-manufacturer/{id}(id=${manufacturer.id})}" class="btn btn-primary" role="button">Edit</a></td>
+            <td><a th:href="@{/manufacturers/delete/{id}(id=${manufacturer.id})}" class="btn btn-danger" role="button">Delete</a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<th:block th:replace="fragment-db :: footer"></th:block>
+</body>
+</html>

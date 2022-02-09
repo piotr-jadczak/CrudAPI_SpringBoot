@@ -1,0 +1,549 @@
+{
+	"info": {
+		"_postman_id": "6b4a4efb-d04d-45a6-90a1-f148dcddc6d3",
+		"name": "Crud Chair - Web Tests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "AddChair_CorrectBody_ReturnsCollection",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id",
+							"value": "0",
+							"type": "text"
+						},
+						{
+							"key": "model",
+							"value": "web model",
+							"type": "text"
+						},
+						{
+							"key": "destination",
+							"value": "BAR",
+							"type": "text"
+						},
+						{
+							"key": "manufacturer",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "specification",
+							"value": "6",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8080/chairs/add-chair",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"chairs",
+						"add-chair"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddChair_NotUniqueModel_ReturnsFormWithError",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id",
+							"value": "0",
+							"type": "text"
+						},
+						{
+							"key": "model",
+							"value": "Dallas",
+							"type": "text"
+						},
+						{
+							"key": "destination",
+							"value": "OFFICE",
+							"type": "text"
+						},
+						{
+							"key": "manufcaturer",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "specification",
+							"value": "7",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8080/chairs/add-chair",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"chairs",
+						"add-chair"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddChair_SpecIsTaken_ThrowsExc",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id",
+							"value": "0",
+							"type": "text"
+						},
+						{
+							"key": "model",
+							"value": "web model 2",
+							"type": "text"
+						},
+						{
+							"key": "destination",
+							"value": "OFFICE",
+							"type": "text"
+						},
+						{
+							"key": "manufcaturer",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "specification",
+							"value": "2",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8080/chairs/add-chair",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"chairs",
+						"add-chair"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteChair_Existing_ReturnsCollection",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/chairs/delete/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"chairs",
+						"delete",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteChair_NotExisting_ThrowsExc",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/chairs/delete/8",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"chairs",
+						"delete",
+						"8"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateChair_CorrectBody_ReturnsCollection",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "model",
+							"value": "Dallas",
+							"type": "text"
+						},
+						{
+							"key": "destination",
+							"value": "BAR",
+							"type": "text"
+						},
+						{
+							"key": "manufacturer",
+							"value": "3",
+							"type": "text"
+						},
+						{
+							"key": "specification",
+							"value": "2",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8080/chairs/add-chair",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"chairs",
+						"add-chair"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateChair_NotUniqueModel_ReturnsFormWithError",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "model",
+							"value": "Comfort casual",
+							"type": "text"
+						},
+						{
+							"key": "destination",
+							"value": "BAR",
+							"type": "text"
+						},
+						{
+							"key": "manufacturer",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "specification",
+							"value": "2",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8080/chairs/add-chair",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"chairs",
+						"add-chair"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateChair_SpecIsTaken_ThrowsExc",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "model",
+							"value": "Dallas",
+							"type": "text"
+						},
+						{
+							"key": "destination",
+							"value": "BAR",
+							"type": "text"
+						},
+						{
+							"key": "manufacturer",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "specification",
+							"value": "3",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8080/chairs/add-chair",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"chairs",
+						"add-chair"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddDistributorToChair_CorrectBody",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "chairId",
+							"value": "3",
+							"type": "text"
+						},
+						{
+							"key": "distributor",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8080/chairs/add-distributor",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"chairs",
+						"add-distributor"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddDistributorToChair_DistAlreadyIn_ThrowsExc",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "chairId",
+							"value": "3",
+							"type": "text"
+						},
+						{
+							"key": "distributor",
+							"value": "3",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8080/chairs/add-distributor",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"chairs",
+						"add-distributor"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "RemoveDistributorFromChair_CorrectBody",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "localhost:8080/chairs/delete-distributor/2/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"chairs",
+						"delete-distributor",
+						"2",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "RemoveDistributorFromChair_DistNotInChair_ThrowsExc",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true,
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "chairId",
+							"value": "3",
+							"type": "text"
+						},
+						{
+							"key": "distributor",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8080/chairs/delete-distributor/2/3",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"chairs",
+						"delete-distributor",
+						"2",
+						"3"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

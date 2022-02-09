@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:replace="fragment-db :: headResources"></th:block>
+    <title>Add chair</title>
+</head>
+<body>
+<th:block th:replace="fragment-db :: navbar"></th:block>
+<div class="container">
+    <div class="mt-2 mb-5">
+        <form method="post" th:action="@{/chairs/add-chair}" th:object="${chairToAdd}" class="border border-dark rounded">
+            <fieldset class="p-3">
+                <legend class="text-center">Add chair</legend>
+                <input type="hidden" th:field="*{id}">
+                <div class="form-group">
+                    <label for="model">Model</label>
+                    <input type="text" class="form-control" id="model" th:field="*{model}" autocomplete="off" /><br>
+                    <a th:if="${#fields.hasErrors('model')}" th:errors="*{model}" class="text-danger"></a>
+                    <span th:if="${modelNotUnique}"><a class="text-danger" th:text="${modelNotUnique}"></a></span>
+                </div>
+                <div class="form-group">
+                    <label for="destination">Destination</label>
+                    <select class="form-control" id="destination" th:field="*{destination}">
+                        <option class="form-control" th:each="destinationT : ${T(chair.crud.demo.domain.extension.DestinationT).values()}"
+                                th:value="${destinationT}" th:text="${destinationT.getValue()}"></option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="manufacturer">Manufacturer</label>
+                    <select class="form-control" id="manufacturer" th:field="*{manufacturer}">
+                        <option class="form-control" th:each="manufacturer : ${manufacturers}"
+                                th:value="${manufacturer.id}" th:text="${manufacturer.companyName}"></option>
+                    </select>
+                    <a th:if="${#fields.hasErrors('manufacturer')}" th:errors="*{manufacturer}" class="text-danger"></a>
+                </div>
+                <div class="form-group">
+                    <label for="specification">Specification</label>
+                    <select class="form-control" id="specification" th:field="*{specification}">
+                        <option class="form-control" th:each="specification : ${specifications}"
+                                th:value="${specification.id}" th:text="${specification}"></option>
+                    </select>
+                    <a th:if="${#fields.hasErrors('specification')}" th:errors="*{specification}" class="text-danger"></a>
+                </div>
+                <div class="col-md-12 text-center">
+                    <button type="submit" class="text-center btn btn-primary">Submit</button>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>
+<th:block th:replace="fragment-db :: footer"></th:block>
+</body>
+</html>

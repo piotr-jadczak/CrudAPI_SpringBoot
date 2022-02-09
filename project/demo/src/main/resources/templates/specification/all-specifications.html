@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:replace="fragment-db :: headResources"></th:block>
+    <title>Specifications</title>
+</head>
+<body>
+<th:block th:replace="fragment-db :: navbar"></th:block>
+<div class="container">
+    <h2>All specifications</h2>
+    <a th:href="@{/specifications/add-specification/0}" class="btn btn-primary" role="button">Add</a>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>id</th>
+            <th>material</th>
+            <th>weight</th>
+            <th>chair</th>
+            <th></th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="specification : ${specifications}">
+            <td><a th:text="${specification.id}"></a></td>
+            <td><a th:text="${specification.material.getValue()}"></a></td>
+            <td><a th:text="${specification.weight}"></a><a> kg</a></td>
+            <td><span th:if="${specification.chair} != null"><a th:text="${specification.chair.model}"></a></span></td>
+            <td><a th:href="@{/specifications/add-specification/{id}(id=${specification.id})}" class="btn btn-primary" role="button">Edit</a></td>
+            <td><a th:href="@{/specifications/delete/{id}(id=${specification.id})}" class="btn btn-danger" role="button">Delete</a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<th:block th:replace="fragment-db :: footer"></th:block>
+</body>
+</html>

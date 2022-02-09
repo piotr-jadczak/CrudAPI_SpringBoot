@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:replace="fragment-db :: headResources"></th:block>
+    <title>Add specification</title>
+</head>
+<body>
+    <th:block th:replace="fragment-db :: navbar"></th:block>
+    <div class="container">
+        <div class="mt-2 mb-5">
+            <form method="post" th:action="@{/specifications/add-specification}" th:object="${specificationToAdd}" class="border border-dark rounded">
+                <fieldset class="p-3">
+                    <legend class="text-center">Add specification</legend>
+                    <input type="hidden" th:field="*{id}">
+                    <div class="form-group">
+                        <label for="weight">Weight</label>
+                        <input type="number" step="0.01" class="form-control" id="weight" th:field="*{weight}" autocomplete="off" /><br>
+                        <a th:if="${#fields.hasErrors('weight')}" th:errors="*{weight}" class="text-danger"></a>
+                    </div>
+                    <div class="form-group">
+                        <label for="material">Material</label>
+                        <select class="form-control" id="material" th:field="*{material}">
+                            <option class="form-control" th:each="materialT : ${T(chair.crud.demo.domain.extension.MaterialT).values()}"
+                                    th:value="${materialT}" th:text="${materialT.getValue()}"></option>
+                        </select>
+                    </div>
+                    <div class="col-md-12 text-center">
+                        <button type="submit" class="text-center btn btn-primary">Submit</button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+    <th:block th:replace="fragment-db :: footer"></th:block>
+</body>
+</html>
