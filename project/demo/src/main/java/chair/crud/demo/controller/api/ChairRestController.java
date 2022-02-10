@@ -26,7 +26,7 @@ public class ChairRestController {
         if(chairsDto.isEmpty()) {
             throw new ChairsDbIsEmptyException("No chairs in db");
         }
-        return chairManager.getAllChairsDto();
+        return chairsDto;
     }
 
     @GetMapping("/api/chair/{id}")
