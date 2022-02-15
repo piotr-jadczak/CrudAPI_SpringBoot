@@ -4,7 +4,6 @@ import chair.crud.demo.domain.dto.ChairCreateDto;
 import chair.crud.demo.domain.dto.ChairDto;
 import chair.crud.demo.exceptions.ChairsDbIsEmptyException;
 import chair.crud.demo.service.ChairManager;
-import chair.crud.demo.service.DistributorManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
